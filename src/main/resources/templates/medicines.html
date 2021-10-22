@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"/>
+    <style>
+        a {
+            text-decoration: none;
+            color: #7a3565;
+        }
+        a:hover {
+            color: #331231;
+        }
+        body {
+            margin: 0;
+            font-size: 14px;
+            font-family: "Courier New", Courier, monospace;
+            background: #4d1d4a;
+            overflow-x: hidden;
+            color: #ffdbb8;
+        }
+
+        *,
+        *:before,
+        *:after {
+            box-sizing: border-box;
+        }
+
+        header {
+            padding: 0.5vw 6%;
+            top: 0;
+            background: #ffdbb8;
+            color: #4d1d4a;
+            width: 100%;
+            text-align: center;
+            box-shadow: 0 -20px 20px 15px rgba(0, 0, 0, 0.4);
+        }
+
+        .header-text {
+            font-size: 25px;
+        }
+
+        .container {
+            text-align: center;
+            font-size: 20px;
+            padding: 30px;
+        }
+
+        .table-dark {
+            color: #ffdbb8;
+        }
+
+        .butt {
+            background: #7a3565;
+            border: 1px solid #ffdbb8;
+            color: #ffdbb8;
+            font-size: 16px;
+            padding: .5em 2vw;
+            cursor: pointer;
+            flex-basis: 25%;
+            flex-grow: 0;
+            transition: background-color 1s ease-out, transform 1s ease-out;
+        }
+
+        .butt:hover {
+            background: #331231;
+            color: #ffdbb8;
+        }
+
+        .butt:focus {
+            transform: scale(1.05);
+        }
+
+        .butt-container {
+            display: flex;
+            justify-content: space-between;
+        }
+        .table>:not(caption)>*>* {
+            background-color: white;
+            border-color: #e3cae0;
+        }
+        .table>:not(caption)>*>th {
+            background-color: #7a3565;
+        }
+    </style>
+    <title>DrugStore - Medicines Table</title>
+</head>
+<body>
+<header>
+    <div class="header-text">
+        <h2>DrugStore DataBase</h2>
+    </div>
+</header>
+<div class="container">
+    <div><h2 class="p-2">Medicines </h2></div>
+    <div style="overflow-y: scroll; max-height: 700px; margin-bottom: 50px">
+        <table class="table table-bordered">
+            <thead class="table-dark">
+            <tr>
+                <th>ID</th>
+                <th>Title</th>
+                <th>Size</th>
+                <th>Measure</th>
+                <th>Purchase Price</th>
+                <th>Selling Price</th>
+                <th>Is prescription needed?</th>
+            </tr>
+            </thead>
+            <tbody>
+            <th:block th:each="medicine : ${medicinesList}">
+                <tr>
+                    <td>[[${medicine.medicineID}]]</td>
+                    <td>[[${medicine.mtitle}]]</td>
+                    <td>[[${medicine.msize}]]</td>
+                    <td>[[${medicine.mmeasure}]]</td>
+                    <td>[[${medicine.mpurchasePrice}]]</td>
+                    <td>[[${medicine.msellingPrice}]]</td>
+                    <td>[[${medicine.mprescriptionIsNeeded}]]</td>
+                </tr>
+                <tr>
+                    <td colspan="3"
+                        style="background-color: #f5edf4; border: 1px solid #7a3565; border-bottom: 3px solid #7a3565">
+                        <a th:href="@{'/medicines/delete/'} + ${medicine.medicineID}">Delete</a>
+                    </td>
+                    <td colspan="4"
+                        style="background-color: #f5edf4; border: 1px solid #7a3565; border-bottom: 3px solid #7a3565">
+                        <a th:href="@{'/medicines/edit/'} + ${medicine.medicineID}">Edit</a>
+                    </td>
+                </tr>
+            </th:block>
+            </tbody>
+        </table>
+    </div>
+    <div class="butt-container">
+        <a class="h2 butt" href="/">Back</a>
+        <a class="h2 butt" th:href="@{/medicines/add}">Add</a>
+    </div>
+</div>
+</body>
+</html>

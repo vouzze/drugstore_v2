@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"/>
+    <style>
+        a {
+            text-decoration: none;
+        }
+
+        body {
+            margin: 0;
+            font-size: 14px;
+            font-family: "Courier New", Courier, monospace;
+            background: #4d1d4a;
+            overflow-x: hidden;
+            color: #ffdbb8;
+        }
+
+        *,
+        *:before,
+        *:after {
+            box-sizing: border-box;
+        }
+
+        header {
+            padding: 0.5vw 6%;
+            top: 0;
+            background: #ffdbb8;
+            color: #4d1d4a;
+            width: 100%;
+            text-align: center;
+            box-shadow: 0 -20px 20px 15px rgba(0, 0, 0, 0.4);
+        }
+
+        .header-text {
+            font-size: 25px;
+        }
+
+        .container {
+            color: #4d1d4a;
+            text-align: center;
+            padding: 30px;
+            margin-top: 1%;
+        }
+
+        .butt {
+            background: #7a3565;
+            border: 1px solid #ffdbb8;
+            color: #ffdbb8;
+            font-size: 16px;
+            padding: .5em 2vw;
+            margin: 20px;
+            cursor: pointer;
+            flex-basis: 25%;
+            flex-grow: 0;
+            transition: background-color 1s ease-out, transform 1s ease-out;
+        }
+
+        .butt:hover {
+            background: #331231;
+            color: #ffdbb8;
+        }
+
+        .butt:focus {
+            transform: scale(1.05);
+        }
+
+        .butt-container {
+            display: flex;
+            flex-direction: column;
+            flex-wrap: wrap;
+        }
+    </style>
+    <title>DrugStore - order drugs and be healthy</title>
+</head>
+<body>
+<header>
+    <div class="header-text">
+        <h2>DrugStore DataBase</h2>
+    </div>
+</header>
+<div class="home-page">
+    <div class="container">
+        <div class="butt-container">
+            <a class="h2 butt" th:href="@{/customers}">View Customers</a>
+            <a class="h2 butt" th:href="@{/employees}">View Employees</a>
+            <a class="h2 butt" th:href="@{/medicines}">View Medicines</a>
+            <a class="h2 butt" th:href="@{/orders}">View Orders</a>
+            <a class="h2 butt" th:href="@{/prescriptions}">View Prescriptions</a>
+        </div>
+    </div>
+</div>
+</body>
+
+</html>
